@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<record id="business_requirement_resource_view_tree" model="ir.ui.view">
+    <field name="name">Procurement Integration</field>
+    <field name="model">business.requirement.resource</field>
+    <field name="type">tree</field>
+    <field name="inherit_id" ref="business_requirement_deliverable.view_business_requirement_resource_tree" />
+    <field name="arch" type="xml">
+        <xpath expr="//tree/field[@name='uom_id']" position="after">
+            <field name="date_planned" attrs="{'readonly':[('state','not in',['draft', 'confirmed'])]}"/>
+            <field name="warehouse_id" attrs="{'readonly':[('state','not in',['draft', 'confirmed'])]}"/>
+            <field name="location_id" attrs="{'readonly':[('state','not in',['draft', 'confirmed'])]}"/>
+            <field name="route_id" attrs="{'readonly':[('state','not in',['draft', 'confirmed'])]}"/>
+            <field name="procurement_id" readonly="0"/>
+        </xpath>
+    </field>
+</record>
+</data>
+</openerp>
