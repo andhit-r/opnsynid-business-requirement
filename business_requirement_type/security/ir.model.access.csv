@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_business_requirement_type_4_employee,business.requirement_type employee,model_business_requirement_type,base.group_user,1,1,1,1
+access_business_requirement_type_4_all,business.requirement_type all,model_business_requirement_type,,1,0,0,0
