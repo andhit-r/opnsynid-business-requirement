@@ -13,3 +13,4 @@
 #
 # To provide both the URL and a branch, use:
 business-requirement https://github.com/OCA/business-requirement 8.0
+opnsynid-server-tools https://github.com/open-synergy/opnsynid-server-tools 8.0
