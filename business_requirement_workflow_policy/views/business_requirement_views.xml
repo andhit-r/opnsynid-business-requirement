@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<openerp>
+<data>
+<record id="business_requirement_view_form" model="ir.ui.view">
+    <field name="name">business.requirement form</field>
+    <field name="model">business.requirement</field>
+    <field name="inherit_id" ref="business_requirement.view_business_requirement_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='state']" position="attributes">
+            <attribute name="clickable"/>
+            <attribute name="statusbar_visible">draft,confirmed,stakeholder_approval,in_progress</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='state']" position="before">
+            <button name="action_confirm" type="object" string="Confirm" class="oe_highlight" attrs="{'invisible':['|',('state','!=','draft'),('confirm_ok','=',False)]}"/>
+            <button name="action_approve" type="object" string="Approve" class="oe_highlight" attrs="{'invisible':['|',('state','!=','confirmed'),('approve_ok','=',False)]}"/>
+            <button name="action_start" type="object" string="Start" class="oe_highlight" attrs="{'invisible':['|',('state','!=','stakeholder_approval'),('start_ok','=',False)]}"/>
+            <button name="action_finish" type="object" string="Finish" class="oe_highlight" attrs="{'invisible':['|',('state','!=','in_progress'),('finish_ok','=',False)]}"/>
+            <button name="action_cancel" type="object" string="Cancel" attrs="{'invisible':['|',('state','=','cancel'),('cancel_ok','=',False)]}"/>
+            <button name="action_restart" type="object" string="Restart" attrs="{'invisible':['|',('state','!=','cancel'),('restart_ok','=',False)]}"/>
+        </xpath>
+
+        <xpath expr="//notebook" position="inside">
+            <page name="policy" string="Policy" groups="base.group_system">
+                <group name="policy_1" colspan="4" col="2">
+                    <field name="confirm_ok"/>
+                    <field name="approve_ok"/>
+                    <field name="start_ok"/>
+                    <field name="finish_ok"/>
+                    <field name="drop_ok"/>
+                    <field name="cancel_ok"/>
+                    <field name="restart_ok"/>
+                </group>
+            </page>
+        </xpath>
+    </field>
+</record>
+
+</data>
+</openerp>
