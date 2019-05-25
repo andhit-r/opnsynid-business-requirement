@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+<data>
+<record id="business_requirement_type_view_form" model="ir.ui.view">
+    <field name="name">business.requirement_type form</field>
+    <field name="model">business.requirement_type</field>
+    <field name="inherit_id" ref="business_requirement_type.business_requirement_type_view_form"/>
+    <field name="arch" type="xml">
+        <data>
+            <xpath expr="//page[@name='general']" position="after">
+                <page name="br_workflow_policy" string="BR Workflow Policy">
+                    <group name="br_workflow_policy_1" colspan="4" col="2">
+                        <field name="br_confirm_grp_ids" widget="many2many_tags"/>
+                        <field name="br_approve_grp_ids" widget="many2many_tags"/>
+                        <field name="br_start_grp_ids" widget="many2many_tags"/>
+                        <field name="br_finish_grp_ids" widget="many2many_tags"/>
+                        <field name="br_cancel_grp_ids" widget="many2many_tags"/>
+                        <field name="br_drop_grp_ids" widget="many2many_tags"/>
+                        <field name="br_restart_grp_ids" widget="many2many_tags"/>
+                    </group>
+                </page>
+            </xpath>
+        </data>
+    </field>
+</record>
+
+</data>
+</openerp>

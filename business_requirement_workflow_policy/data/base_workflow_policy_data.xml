@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2018 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+<data>
+
+<record id="workflow_policy_br" model="base.workflow_policy">
+    <field name="model_id" ref="business_requirement.model_business_requirement"/>
+</record>
+
+<record id="workflow_policy_br_confirm" model="base.workflow_policy_line">
+    <field name="workflow_id" ref="workflow_policy_br"/>
+    <field name="field_id" ref="business_requirement_workflow_policy.field_business_requirement_confirm_ok"/>
+    <field name="python_code">result = document.type_id.br_confirm_grp_ids.ids</field>
+</record>
+
+<record id="workflow_policy_br_approve" model="base.workflow_policy_line">
+    <field name="workflow_id" ref="workflow_policy_br"/>
+    <field name="field_id" ref="business_requirement_workflow_policy.field_business_requirement_approve_ok"/>
+    <field name="python_code">result = document.type_id.br_approve_grp_ids.ids</field>
+</record>
+
+<record id="workflow_policy_br_open" model="base.workflow_policy_line">
+    <field name="workflow_id" ref="workflow_policy_br"/>
+    <field name="field_id" ref="business_requirement_workflow_policy.field_business_requirement_start_ok"/>
+    <field name="python_code">result = document.type_id.br_start_grp_ids.ids</field>
+</record>
+
+<record id="workflow_policy_br_done" model="base.workflow_policy_line">
+    <field name="workflow_id" ref="workflow_policy_br"/>
+    <field name="field_id" ref="business_requirement_workflow_policy.field_business_requirement_finish_ok"/>
+    <field name="python_code">result = document.type_id.br_finish_grp_ids.ids</field>
+</record>
+
+<record id="workflow_policy_br_drop" model="base.workflow_policy_line">
+    <field name="workflow_id" ref="workflow_policy_br"/>
+    <field name="field_id" ref="business_requirement_workflow_policy.field_business_requirement_drop_ok"/>
+    <field name="python_code">result = document.type_id.br_drop_grp_ids.ids</field>
+</record>
+
+<record id="workflow_policy_br_cancel" model="base.workflow_policy_line">
+    <field name="workflow_id" ref="workflow_policy_br"/>
+    <field name="field_id" ref="business_requirement_workflow_policy.field_business_requirement_cancel_ok"/>
+    <field name="python_code">result = document.type_id.br_cancel_grp_ids.ids</field>
+</record>
+
+<record id="workflow_policy_br_restart" model="base.workflow_policy_line">
+    <field name="workflow_id" ref="workflow_policy_br"/>
+    <field name="field_id" ref="business_requirement_workflow_policy.field_business_requirement_restart_ok"/>
+    <field name="python_code">result = document.type_id.br_restart_grp_ids.ids</field>
+</record>
+
+</data>
+</openerp>
