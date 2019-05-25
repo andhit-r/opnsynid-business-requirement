@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+<data>
+<record id="business_requirement_deliverable_view_form" model="ir.ui.view">
+    <field name="name">business.requirement.deliverable form</field>
+    <field name="model">business.requirement.deliverable</field>
+    <field name="inherit_id" ref="business_requirement_deliverable.view_business_requirement_deliverable_form"/>
+    <field name="arch" type="xml">
+        <data>
+            <xpath expr="//field[@name='product_id']" position="before">
+                <field name="allowed_deliverable_product_ids" widget="many2many_tags"/>
+                <field name="allowed_deliverable_product_category_ids" widget="many2many_tags"/>
+                <field name="allowed_resource_product_template_ids" widget="many2many_tags"/>
+                <field name="allowed_resource_product_category_ids" widget="many2many_tags"/>
+            </xpath>
+
+            <xpath expr="//field[@name='product_id']" position="attributes">
+                <attribute name="domain">['|',('id','=',allowed_deliverable_product_ids[0][2]),('categ_id.id','=',allowed_deliverable_product_category_ids[0][2])]</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='resource_ids']/tree/field[@name='product_id']" position="attributes">
+                <attribute name="domain">['|',('product_tmpl_id.id','=',parent.allowed_resource_product_template_ids[0][2]),('categ_id.id','=',parent.allowed_resource_product_category_ids[0][2])]</attribute>
+            </xpath>
+
+        </data>
+    </field>
+</record>
+
+</data>
+</openerp>
